@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Питомник SHA&LUN — Мейн-Куны</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --text: #f4f4f4;
+      --accent: #d4af37;
+      --card-bg: #1a1a1a;
+      --shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
+    }
+    [data-theme="light"] {
+      --bg: #fefefe;
+      --text: #2d2d2d;
+      --accent: #9c7b16;
+      --card-bg: #ffffff;
+      --shadow: 0 4px 20px rgba(156, 123, 22, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    header {
+      background: linear-gradient(to right, var(--accent), #111);
+      color: #fff;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+      box-shadow: var(--shadow);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 40px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 8px 14px;
+      background-color: transparent;
+      border: 2px solid #fff;
+      color: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .theme-toggle:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .kittens-link {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      padding: 8px 14px;
+      background: transparent;
+      border: 2px solid #fff;
+      color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+
+    .kittens-link:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 80px 20px;
+      background: url('https://images.unsplash.com/photo-1581873372796-b97e8c04f5f1?auto=format&fit=crop&w=1400&q=80') no-repeat center center/cover;
+      color: var(--accent);
+      animation: fadeIn 2s ease;
+    }
+
+    .hero h2 {
+      font-size: 36px;
+      margin-bottom: 15px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .hero p {
+      font-size: 20px;
+      max-width: 600px;
+    }
+
+    section {
+      padding: 50px 20px;
+      max-width: 1100px;
+      margin: auto;
+      animation: fadeInUp 1.2s ease forwards;
+    }
+
+    h3 {
+      font-size: 30px;
+      margin-bottom: 25px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .cats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .cat-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .cat-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 24px rgba(212, 175, 55, 0.3);
+    }
+
+    .cat-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .cat-card .info {
+      padding: 18px;
+    }
+
+    .contact-form {
+      background: var(--card-bg);
+      padding: 24px;
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-form label,
+    .contact-form input,
+    .contact-form textarea {
+      display: block;
+      width: 100%;
+      margin-bottom: 16px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .contact-form button {
+      background: var(--accent);
+      color: #fff;
+      padding: 12px 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    footer {
+      background-color: var(--accent);
+      color: #fff;
+      text-align: center;
+      padding: 24px;
+      margin-top: 40px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .hero h2 { font-size: 26px; }
+      .hero p { font-size: 16px; }
+      h3 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body data-theme="dark">
+  <header>
+    <h1>Питомник SHA&LUN</h1>
+    <div style="position:absolute;top:20px;left:20px;display:flex;align-items:center;gap:16px;">
+      <a href="kittens.html" target="_blank" class="kittens-link" style="position:static;border:2px solid #fff;color:#fff;border-radius:6px;text-decoration:none;font-weight:600;transition:background-color 0.3s;padding:8px 14px;background:transparent;">Котята</a>
+      <span style="display:inline-block;width:1px;height:28px;background:#fff;opacity:0.5;margin:0 8px;"></span>
+    </div>
+    <div style="position:absolute;top:20px;right:20px;">
+      <button class="theme-toggle" onclick="toggleTheme()" style="position:static;">Сменить тему</button>
+    </div>
+    <p>Кошки породы Мейн-Кун</p>
+  </header>
+
+  <section class="hero">
+    <h2>Добро пожаловать в SHA&LUN</h2>
+    <p>Разведение породистых мейн-кунов различных окрасов, полидактов — здоровье и благородство в каждом поколении.</p>
+  </section>
+
+  <section>
+    <h3>Наши кошки</h3>
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+      <div class="cats" style="flex:1;">
+        <div class="cat-card">
+          <img src="https://i.pinimg.com/736x/1b/63/bd/1b63bd36aae54b596100d763687b79e1.jpg" alt="Окрас - черный дым">
+          <div class="info">
+            <h4>Шантай</h4>
+            <p>Взрослый мейн-кун окраса черный дым. Уверенный, крупный, с мощным костяком и выразительным взглядом.</p>
+          </div>
+        </div>
+        <div class="cat-card">
+          <img src="https://i.pinimg.com/originals/10/04/34/100434b7034bc820046f434707dd6897.jpg" alt="Окрас - черепаха">
+          <div class="info">
+            <h4>Луна</h4>
+            <p>Красивая кошка черепахового окраса. Умная, уравновешенная, очень ласковая.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h3>Связаться с нами</h3>
+    <div class="contact-form">
+      <form>
+        <label for="name">Ваше имя:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="phone">Телефон:</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <label for="message">Сообщение:</label>
+        <textarea id="message" name="message" rows="4"></textarea>
+
+        <button type="submit">Отправить</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 ShaLoon — Питомник кошек породы Мейн Кун. Все права защищены.</p>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      const current = body.getAttribute('data-theme');
+      body.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+    }
+  </script>
+</body>
+</html>
